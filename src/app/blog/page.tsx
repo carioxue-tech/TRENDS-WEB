@@ -1,28 +1,36 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import BlogHero from "@/components/blog/BlogHero";
-import BlogGrid from "@/components/blog/BlogGrid";
 import Link from "next/link";
 
-export const metadata = {
-  title: "Blog - Tuer Garment | Women's Clothing Manufacturing News and Trends",
-  description:
-    "Stay informed with Tuer Garment Blog's insights on the women's clothing manufacturing industry and trends.",
-};
+type Params = { id: string };
 
-export default function BlogPage() {
+export default async function Page({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
+  const { id } = await params;
+
   return (
     <main className="min-h-screen">
       <Header />
 
-      <div className="px-4 pt-6">
-        <Link href="/blog" className="text-sm underline">
-          ← Back to Blog
-        </Link>
-      </div>
+      <section className="mx-auto w-full max-w-6xl px-4 py-12">
+        <div className="mb-6">
+          <Link href="/blog" className="text-sm underline">
+            ← Back to Blog
+          </Link>
+        </div>
 
-      <BlogHero />
-      <BlogGrid />
+        <h1 className="text-3xl font-semibold">Blog Detail</h1>
+        <p className="mt-2 text-sm opacity-70">Post ID: {id}</p>
+
+        <div className="mt-8 rounded-xl border p-6">
+          <p className="opacity-80">
+            Placeholder detail page. Replace with your real post rendering.
+          </p>
+        </div>
+      </section>
 
       <Footer />
     </main>
