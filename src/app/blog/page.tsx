@@ -1,50 +1,30 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BlogHero from "@/components/blog/BlogHero";
+import BlogGrid from "@/components/blog/BlogGrid";
+import Link from "next/link";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
+export const metadata = {
+  title: "Blog - Tuer Garment | Women's Clothing Manufacturing News and Trends",
+  description:
+    "Stay informed with Tuer Garment Blog's insights on the women's clothing manufacturing industry and trends.",
+};
 
-  return {
-    title: `Blog ${id} - Tuer Garment`,
-    description: `Blog detail page for post ${id}.`,
-  };
-}
-
-export default async function BlogDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
-
+export default function BlogPage() {
   return (
     <main className="min-h-screen">
       <Header />
 
-      <section className="mx-auto w-full max-w-6xl px-4 py-12">
-        <div className="mb-6">
-          <a href="/blog" className="text-sm underline">
-            ← Back to Blog
-          </a>
-        </div>
+      <div className="px-4 pt-6">
+        <Link href="/blog" className="text-sm underline">
+          ← Back to Blog
+        </Link>
+      </div>
 
-        <h1 className="text-3xl font-semibold">Blog Post</h1>
-        <p className="mt-2 text-sm opacity-70">Post ID: {id}</p>
-
-        <div className="mt-8 rounded-xl border p-6">
-          <p className="opacity-80">
-            This is a placeholder detail page. Replace this section with your
-            real blog content rendering logic.
-          </p>
-        </div>
-      </section>
+      <BlogHero />
+      <BlogGrid />
 
       <Footer />
     </main>
   );
 }
-
